@@ -9,7 +9,12 @@ const app = express();
 
 connectDB();
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || "*" }));
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.APP_URL,
+  }),
+);
 app.use(express.json());
 app.use(morgan("dev"));
 

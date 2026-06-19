@@ -52,6 +52,7 @@ jobs:
             -p 4000:4000 \
             --name trail-kit-api-container \
             -e DB_URL=${{ secrets.DB_URL }} \
+            -e APP_URL=${{ secrets.APP_URL }} \
             jawaddev1/trail-kit-api:latest
 
       - name: Run Frontend Container
@@ -60,5 +61,5 @@ jobs:
             --restart always \
             -p 3000:3000 \
             --name trail-kit-frontend-container \
-            -e VITE_API_URL=http://52.73.60.42:4000/api \
+            -e VITE_API_URL=${{ secrets.VITE_API_URL }} \
             jawaddev1/trail-kit:latest

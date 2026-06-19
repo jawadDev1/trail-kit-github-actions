@@ -1,0 +1,64 @@
+name: Deploy Trail-Kit to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source code
+        uses: actions/checkout@v4
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      # Build Backend
+      - name: Build Backend Docker Image
+        run: docker build -t jawaddev1/trail-kit-api:latest ./backend
+
+      # Build Front end
+      - name: Build Front-end Docker Image
+        run: docker build -t jawaddev1/trail-kit:latest ./frontend
+
+      # Push Backend
+      - name: Publish Backend to Docker Hub
+        run: docker push jawaddev1/trail-kit-api:latest
+
+      # Push Front-end
+      - name: Publish Frontend to Docker Hub
+        run: docker push jawaddev1/trail-kit:latest
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Pull Backend Image
+        run: docker pull jawaddev1/trail-kit-api:latest
+
+      - name: Pull Frontend Image
+        run: docker pull jawaddev1/trail-kit:latest
+
+      - name: Stop Existing Containers
+        run: |
+          docker stop trail-kit-api-container || true && docker rm trail-kit-api-container || true
+          docker stop trail-kit-frontend-container || true && docker rm trail-kit-frontend-container || true
+
+      - name: Run Backend Container
+        run: |
+          docker run -d \
+            --restart always \
+            -p 4000:4000 \
+            --name trail-kit-api-container \
+            -e DB_URL=${{ secrets.DB_URL }} \
+            jawaddev1/trail-kit-api:latest
+
+      - name: Run Frontend Container
+        run: |
+          docker run -d \
+            --restart always \
+            -p 3000:3000 \
+            --name trail-kit-frontend-container \
+            -e VITE_API_URL=http://100.53.137.108:4000/api \
+            jawaddev1/trail-kit:latest

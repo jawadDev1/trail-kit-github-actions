@@ -1,4 +1,4 @@
-FROM node:20-slim
+FROM node:24-slim
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
@@ -15,4 +15,5 @@ COPY . .
 RUN pnpm run build
 EXPOSE 3000 
 
-CMD [ "pnpm", "run", "start" ]
+CMD [ "pnpm", "run", "preview" ]
+

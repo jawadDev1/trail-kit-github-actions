@@ -1,4 +1,4 @@
-FROM node:20-slim
+FROM node:24-slim
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
@@ -12,7 +12,6 @@ COPY pnpm-lock.yaml ./
 RUN pnpm install
 COPY . .
 
-RUN pnpm run build
 EXPOSE 4000 
 
 CMD [ "pnpm", "run", "start" ]

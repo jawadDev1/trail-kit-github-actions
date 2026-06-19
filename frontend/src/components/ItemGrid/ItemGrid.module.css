@@ -1,0 +1,93 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Skeleton */
+.skeleton {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(26, 46, 26, 0.06);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.skeletonImg {
+  aspect-ratio: 4 / 3;
+  background: #e8e4df;
+}
+
+.skeletonBody {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.skeletonLine {
+  height: 12px;
+  border-radius: 4px;
+  background: #e8e4df;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* State (error / empty) */
+.state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stateIcon {
+  font-size: 2.5rem;
+  color: #c4622d;
+  margin-bottom: 0.5rem;
+}
+
+.stateTitle {
+  font-family: "Sora", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a2e1a;
+  margin: 0;
+}
+
+.stateMsg {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  color: #6b7b6b;
+  margin: 0;
+  max-width: 360px;
+}
+
+.retryBtn {
+  margin-top: 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  background: #1a2e1a;
+  color: #e8d5b0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.retryBtn:hover {
+  background: #243d24;
+}

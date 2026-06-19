@@ -1,0 +1,119 @@
+.footer {
+  background: #1a2e1a;
+  padding: 4rem 2rem 2rem;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(232, 213, 176, 0.1);
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 260px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #f7f3ed;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  color: rgba(247, 243, 237, 0.4);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  gap: 3.5rem;
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.groupLabel {
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(232, 213, 176, 0.4);
+}
+
+.link {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  color: rgba(247, 243, 237, 0.55);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.link:hover {
+  color: #e8d5b0;
+}
+
+.bottom {
+  max-width: 1280px;
+  margin: 2rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  color: rgba(247, 243, 237, 0.3);
+}
+
+.api {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4caf82;
+  box-shadow: 0 0 0 2px rgba(76, 175, 130, 0.25);
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 3rem 1.25rem 1.5rem;
+  }
+  .inner {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .links {
+    gap: 2rem;
+  }
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

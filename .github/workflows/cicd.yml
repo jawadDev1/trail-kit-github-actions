@@ -15,11 +15,11 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       # Build Backend
       - name: Build Backend Docker Image
-        run: docker build -t jawaddev1/trail-kit-api:latest ./backend
+        run: docker build  -t jawaddev1/trail-kit-api:latest ./backend
 
       # Build Front end
       - name: Build Front-end Docker Image
-        run: docker build -t jawaddev1/trail-kit:latest ./frontend
+        run: docker build --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} -t jawaddev1/trail-kit:latest ./frontend
 
       # Push Backend
       - name: Publish Backend to Docker Hub

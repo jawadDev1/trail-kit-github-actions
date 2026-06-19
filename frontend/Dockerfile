@@ -2,6 +2,9 @@ FROM node:24-slim
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
+
 RUN corepack enable
 
 WORKDIR /app

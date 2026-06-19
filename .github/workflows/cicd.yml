@@ -60,5 +60,5 @@ jobs:
             --restart always \
             -p 3000:3000 \
             --name trail-kit-frontend-container \
-            -e VITE_API_URL=http://54.174.234.80:4000/api \
+            -e VITE_API_URL=http://52.73.60.42:4000/api \
             jawaddev1/trail-kit:latest
